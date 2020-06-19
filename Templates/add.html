@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <title>Add Contact</title>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	.inp_file{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+	body{
+  font-family: 'Poiret One', cursive;
+  background: #3494E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+h4{
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+.form-wrapper{
+  background: #fff;
+  border-radius: 5px;
+  padding: 50px;
+}
+.form-control, .custom-select{
+  border-radius: 0px;
+    color: #495057;
+    background-color: #f1f1f1;
+    border-color: none;
+   
+
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #ffffff;
+    border:1px solid #b5b6b3;
+    outline: 0;
+    box-shadow: none;
+
+}
+
+.btn{
+  background: #3494E6;
+  border: #3494E6;
+  padding: 0.6rem 3rem;
+  font-weight: bold;
+}
+.btn:hover, .btn:focus, .btn:active, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  background: #3494E6;
+  border: #3494E6;
+  outline: 0;
+}
+	</style>
+ </head>
+ <body>
+  
+ <!--<table>
+ <tr><td>Name</td><td><input type = "text" name="name"></td></tr>
+ <tr><td>Email</td><td><input type="email" name="email"></td></tr>
+ <tr><td>Address</td><td><input type = "text" name="address"></td></tr>
+  <input type="file" name="file" />  
+ <tr><td><input type="submit" value="Submit"></td></tr>
+ </table>-->
+ <section class="contact-from pt-4">
+<div class="container">                
+                <div class="row mt-5">
+                    <div class="col-md-7 mx-auto">
+                      <div class="form-wrapper">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h4>Registration form</h4>
+                          </div>
+                        </div>
+                        <form action = "/savedetails" method="post"  enctype="multipart/form-data"> 
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type = "text" class="form-control" name = "name" placeholder="Name">
+                                    </div>
+                                </div>                               
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type = "email" class="form-control" name = "email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> 
+									  <div class="form-check form-check-inline">
+										<input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+										<label class="form-check-label" for="inlineRadio1">Male</label>
+									  </div>
+									   <div class="form-check form-check-inline">
+										<input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+										<label class="form-check-label" for="inlineRadio1">Female</label>
+									  </div>
+                                    </div>
+                                </div>
+                              
+                              <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type = "text" class="form-control" name = "contact" placeholder="Phone number">
+                                    </div>
+                                </div>
+                              
+                              <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type = "date" name = "dob" class="form-control">
+                                    </div>
+                               </div>
+							   <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label class="form-check-label" >Upload Profile  Pic  <i class="fa fa-camera ml-3" aria-hidden="true" style="color:blue;"></i> </label>
+										<input id="profile_pi" name = "profile_pic" class="inp_file" type = "file"  />
+                                    </div>
+                               </div>
+                              
+                              
+                                
+                            </div>
+      <div class="row">
+            <button class="btn btn-primary mx-auto">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+  
+  </div>
+  </section>
+ </body>
+ </html>  
