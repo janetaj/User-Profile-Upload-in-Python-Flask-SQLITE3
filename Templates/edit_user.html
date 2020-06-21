@@ -82,16 +82,16 @@ h4{
                             <h4>Registration form</h4>
                           </div>
                         </div>
-                        <form action = "/savedetails" method="post"  enctype="multipart/form-data"> 
+                        <form action = "/edit_user" method="post"  enctype="multipart/form-data"> 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "text" class="form-control" name = "name" placeholder="Name">
+                                        <input type = "text" class="form-control" name = "name" value="{{ request.form['name'] }}">
                                     </div>
                                 </div>                               
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "email" class="form-control" name = "email" placeholder="Email">
+                                        <input type = "email" class="form-control" name = "email" value="{{ request.form['email'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -115,7 +115,7 @@ h4{
                               
                               <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "date" name = "dob" class="form-control">
+                                        <input type = "date" name = "dob" class="form-control" value="{{ request.form['dob']  }}">
                                     </div>
                                </div>
 							   <div class="col-md-6">
