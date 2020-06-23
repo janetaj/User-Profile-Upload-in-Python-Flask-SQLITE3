@@ -10,8 +10,7 @@ app.config['UPLOAD_DIR'] = 'static/Uploads'
 def get_post(id):
     con = sqlite3.connect("users.db")
     con.row_factory = sqlite3.Row
-    user = con.execute('SELECT * FROM users WHERE id = ?',
-                        (id,)).fetchone()
+    user = con.execute('SELECT * FROM users WHERE id = ?',(id,)).fetchone()
     con.close()
     if user is None:
         abort(404)
@@ -77,14 +76,27 @@ def edit_user(id):
         gender = request.form["gender"]
         contact = request.form["contact"]
         dob = request.form["dob"]
-        file = request.files["profile_pic"]
-        file.save(os.path.join(app.config['UPLOAD_DIR'],file.filename))
         with sqlite3.connect("users.db") as con:
-            cur = con.cursor()   
-            cur.execute("Update users set name = ?, email = ?, gender = ?, contact = ?, dob = ?, profile_pic = ?",(name,email,gender,contact,dob,file.filename))
+            cur = con.cursor()
+            query = '''
+	    UPDATE users
+	    SET name = ?, email = ?, gender = ?, contact = ?, dob = ? where id = ?
+            '''
+
+            cur.execute(query,(name,email,gender,contact,dob,id))
+            #cur.execute("Update users set name = ?, email = ?, gender = ?, contact = ?, dob = ? ",(name,email,gender,contact,dob) "where id = ?",id)
             con.commit()
             return redirect(url_for('index'))
     return render_template('edit_user.html', user = user)
+
+@app.route('/<int:id>/delete_user', methods=("GET", "POST"))
+def delete_user(id):
+    user = get_post(id)
+    with sqlite3.connect("users.db") as con:
+        cur = con.cursor() 
+        con.execute('DELETE FROM users WHERE id = ?', (id,))
+        con.commit()
+        return redirect(url_for('index'))
     
 
 if __name__ == "__main__":
