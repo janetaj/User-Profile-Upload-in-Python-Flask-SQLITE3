@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html>
  <head>
- <title>Add Contact</title>
+ <title>Edit User</title>
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -79,49 +79,60 @@ h4{
                       <div class="form-wrapper">
                         <div class="row">
                           <div class="col-md-12">
-                            <h4>Registration form</h4>
+                            <h4>Edit form</h4>
                           </div>
                         </div>
-                        <form action = "/edit_user" method="post"  enctype="multipart/form-data"> 
+                        <form  method="post"  enctype="multipart/form-data"> 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "text" class="form-control" name = "name" value="{{ request.form['name'] }}">
+                                        <input type = "text" class="form-control" name = "name" value="{{ user['name'] }}">
                                     </div>
                                 </div>                               
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "email" class="form-control" name = "email" value="{{ request.form['email'] }}">
+                                        <input type = "email" class="form-control" name = "email" value="{{ user['email'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group"> 
 									  <div class="form-check form-check-inline">
-										<input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio1" value="Male">
+										{% if user['gender'] ==  "Male" %}
+										<input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio1" value="Male" checked>
 										<label class="form-check-label" for="inlineRadio1">Male</label>
-									  </div>
-									   <div class="form-check form-check-inline">
 										<input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio2" value="Female">
 										<label class="form-check-label" for="inlineRadio1">Female</label>
+										{% endif %}
+										
+									  </div>
+									   <div class="form-check form-check-inline">
+									   {% if user['gender'] ==  "Female" %}
+									   <input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio1" value="Male" >
+										<label class="form-check-label" for="inlineRadio1">Male</label>
+										<input class="form-check-input" name = "gender" type = "radio" name="inlineRadioOptions" id="inlineRadio2" value="Female" checked>
+										<label class="form-check-label" for="inlineRadio1">Female</label>
+										{% endif %}
+										
 									  </div>
                                     </div>
                                 </div>
                               
                               <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "text" class="form-control" name = "contact" placeholder="Phone number">
+                                        <input type = "text" class="form-control" name = "contact" placeholder="Phone number" value="{{ user['contact'] }}">
                                     </div>
                                 </div>
                               
                               <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type = "date" name = "dob" class="form-control" value="{{ request.form['dob']  }}">
+                                        <input type = "date" name = "dob" class="form-control" value="{{ user['dob']  }}">
                                     </div>
                                </div>
 							   <div class="col-md-6">
                                     <div class="form-group">
-                                      <label class="form-check-label" >Upload Profile  Pic  <i class="fa fa-camera ml-3" aria-hidden="true" style="color:blue;"></i> </label>
-										<input id="profile_pi" name = "profile_pic" class="inp_file" type = "file"  />
+									
+                                    
+										<label class="form-check-label" >Already Uploaded Profile pic is: {{ user['profile_pic']  }} <br/> </label>
                                     </div>
                                </div>
                               
@@ -129,7 +140,7 @@ h4{
                                 
                             </div>
       <div class="row">
-            <button class="btn btn-primary mx-auto">Register</button>
+            <button class="btn btn-primary mx-auto">Update</button>
                             </div>
                         </form>
                     </div>
